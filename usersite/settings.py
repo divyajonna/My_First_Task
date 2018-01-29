@@ -55,7 +55,8 @@ ROOT_URLCONF = 'usersite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        #this is to make our login functionality to work 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

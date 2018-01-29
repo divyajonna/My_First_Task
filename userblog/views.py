@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
-from django.contrib.auth import logout
+
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
@@ -27,3 +27,6 @@ def signup(request):
 @login_required
 def home(request):
     return render(request, 'userblog/home.html')
+
+def login(request):
+    return render(request, 'userblog/login.html')
