@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-
-from django.contrib.auth.decorators import logout
 
 from .models import UserPost
 from django.utils import timezone
 
 # Create your views here.
-@login_required
-def home(request):
-    return render(request, 'userblog/home.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -27,3 +23,7 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'userblog/signup.html', {'form': form})
+
+@login_required
+def home(request):
+    return render(request, 'userblog/home.html')
