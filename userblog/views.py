@@ -30,3 +30,7 @@ def home(request):
 
 def login(request):
     return render(request, 'userblog/login.html')
+
+def userpost_list(request):
+    posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'userblog/userpost_list.html',{'posts':posts})

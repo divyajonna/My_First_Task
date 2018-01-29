@@ -12,6 +12,10 @@ urlpatterns = [
     url(r'^$', core_views.home, name='home'),
 
     url(r'^login/$', auth_views.login, {'template_name': 'userblog/login.html'}, name='login'),
+
+    #publishing the post from models
+    url(r'^posts$', core_views.userpost_list, name='userpost_list'),
+
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
 
 ]

@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,'templates')],
-        #this is to make our login functionality to work 
+        #this is to make our login functionality to work
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +120,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#building path for out static files
+STATIC_ROOT = os.path.join(BASE_DIR,'Static')
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
