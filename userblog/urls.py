@@ -15,6 +15,8 @@ urlpatterns = [
 
     #publishing the post from models
     url(r'^posts$', core_views.userpost_list, name='userpost_list'),
+    #added url for postdetails
+    url(r'^posts/(?P<pk>\d+)/$', core_views.userpost_detail, name='userpost_detail'),
 
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
 

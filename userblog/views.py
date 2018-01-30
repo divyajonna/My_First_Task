@@ -8,6 +8,9 @@ from django.shortcuts import render, redirect
 from .models import UserPost
 from django.utils import timezone
 
+#this is to create postdetail
+from django.shortcuts import render, get_object_or_404
+
 # Create your views here.
 
 def signup(request):
@@ -35,3 +38,9 @@ def login(request):
 def userpost_list(request):
     posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'userblog/userpost_list.html',{'posts':posts})
+
+#to view our postdetails
+@login_required
+def userpost_detail(request, pk):
+    post = get_object_or_404(UserPost, pk=pk)
+    return render(request, 'userblog/userpost_detail.html', {'post': post})
