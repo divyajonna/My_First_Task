@@ -11,6 +11,9 @@ from django.utils import timezone
 #this is to create postdetail
 from django.shortcuts import render, get_object_or_404
 
+#to create postform
+from .forms import PostForm
+
 # Create your views here.
 
 def signup(request):
@@ -44,3 +47,8 @@ def userpost_list(request):
 def userpost_detail(request, pk):
     post = get_object_or_404(UserPost, pk=pk)
     return render(request, 'userblog/userpost_detail.html', {'post': post})
+
+@login_required
+def userpost_new(request):
+    form = PostForm()
+    return render(request, 'userblog/userpost_edit.html', {'form': form})

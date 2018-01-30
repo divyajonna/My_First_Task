@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^posts$', core_views.userpost_list, name='userpost_list'),
     #added url for postdetails
     url(r'^posts/(?P<pk>\d+)/$', core_views.userpost_detail, name='userpost_detail'),
+    #adding postnew
+    url(r'^posts/new/$', core_views.userpost_new, name='userpost_new'),
 
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
 
