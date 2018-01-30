@@ -9,7 +9,6 @@
       <h1>My Site</h1>
       {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">logout</a>
-
         <a href="{% url 'userpost_list' %}">posts</a>
       {% else %}
         <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
