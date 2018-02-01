@@ -18,6 +18,14 @@ base.html: grey">{{ field.help_text }}</small>
         {% endfor %}
       </p>
     {% endfor %}
+
+    <!--this is to create dropdown-->
+    <label for="colorSelect">Choose Category</label>
+    <select type="text" id="colorSelect" name="colorSelect">
+      <option selected>IT posts</option>
+      <option>Art posts</option>
+   </select>
+   <br><br>
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}

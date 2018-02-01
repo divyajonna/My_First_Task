@@ -3,6 +3,12 @@
 from django.db import models
 from django.utils import timezone
 
+#this is to make drop-dropdown
+CATEGORY_CHOICES = {
+    ('itposts', 'ITPOSTS'),
+    ('artposts','ARTPOSTS'),
+} #after doing changes to models- do makemigrations 
+
 # Create your models here. (place to define our blog Post)
 class UserPost(models.Model):
     author = models.ForeignKey('auth.User', on_delete =models.CASCADE)
@@ -10,6 +16,9 @@ class UserPost(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+
+    #for category drop-dropdown
+    category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='itposts')
 
     def publish(self):
         self.published_date = timezone.now()
