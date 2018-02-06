@@ -14,6 +14,11 @@ from django.shortcuts import render, get_object_or_404
 #to create postform
 from .forms import PostForm
 
+#to create custom permissions
+from django.contrib.auth.decorators import permission_required
+
+from django.http import HttpResponseForbidden
+
 # Create your views here.
 
 def signup(request):
@@ -24,7 +29,7 @@ def signup(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            #removed the below line as it showing 2-arg cant be taken error 
+            #removed the below line as it showing 2-arg cant be taken error
             #login(request,user)
             return redirect('home')
     else:
@@ -39,9 +44,13 @@ def login(request):
     return render(request, 'userblog/login.html')
 
 @login_required
+#@permission_required('UserPost.itposts', raise_exception =True)
 def userpost_list(request):
-    posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'userblog/userpost_list.html',{'posts':posts})
+        #u.user_permissions.add(user_permisssions.get(permissions))
+        posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        return render(request, 'userblog/userpost_list.html',{'posts':posts})
+
+
 
 #to view our postdetails
 @login_required

@@ -4,8 +4,11 @@ from django.contrib.auth import views as auth_views
 
 from . import views as core_views
 
+from django.contrib import admin
+
 urlpatterns = [
 
+    url(r'^admin/',admin.site.urls),
 
     url(r'^signup/$', core_views.signup, name='signup'),
     #url(r'^$', views.post_list, name='post_list'),

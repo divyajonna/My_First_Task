@@ -1,0 +1,5 @@
+1). need to create User login credentials.
+
+2). created user posts must be autheticated and no one should able to see the posts other than specific user.
+
+3).create 2-different categories by name itposts and artposts, only specified user must see either one of the category posts

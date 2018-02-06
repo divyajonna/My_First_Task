@@ -7,7 +7,10 @@ from django.utils import timezone
 CATEGORY_CHOICES = {
     ('itposts', 'ITPOSTS'),
     ('artposts','ARTPOSTS'),
-} #after doing changes to models- do makemigrations 
+} #after doing changes to models- do makemigrations
+
+#this is to enable to access the permisssions
+from django.contrib.auth.models import Permission
 
 # Create your models here. (place to define our blog Post)
 class UserPost(models.Model):
@@ -19,6 +22,14 @@ class UserPost(models.Model):
 
     #for category drop-dropdown
     category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='itposts')
+
+    class Meta:
+        # to addd permissions to use either it-posts or art-ITPOSTS
+        permissions = (
+                ("itposts", "Can see only available it-posts"),
+                ("artposts", "can see only available art-posts"),
+
+            )
 
     def publish(self):
         self.published_date = timezone.now()
