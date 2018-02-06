@@ -1,6 +1,13 @@
 {% extends 'userblog/base.html' %}
 
 {% block content %}
+
+<!--this if statement used so that 3rd person wont be able to edit our post-->
+{% if user.is_authenticated %}
+  <!--this is to enable editing icon in the form we created-->
+  <a class="btn btn-default" href="{% url 'userpost_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+{% endif %}
+
     <div class="post">
         {% if post.published_date %}
             <div class="date">
@@ -8,11 +15,6 @@
             </div>
         {% endif %}
 
-        <!--this if statement used so that 3rd person wont be able to edit our post-->
-        {% if user.is_authenticated %}
-          <!--this is to enable editing icon in the form we created-->
-          <a class="btn btn-default" href="{% url 'userpost_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        {% endif %}
 
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
