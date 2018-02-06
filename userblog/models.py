@@ -23,13 +23,11 @@ class UserPost(models.Model):
     #for category drop-dropdown
     category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='itposts')
 
-    class Meta:
-        # to addd permissions to use either it-posts or art-ITPOSTS
-        permissions = (
-                ("itposts", "Can see only available it-posts"),
-                ("artposts", "can see only available art-posts"),
-
-            )
+#        # to addd permissions to use either it-posts or art-ITPOSTS
+#        permissions = (
+#                ("itposts", "Can see only available it-posts"),
+#                ("artposts", "can see only available art-posts"),
+#            )
 
     def publish(self):
         self.published_date = timezone.now()
