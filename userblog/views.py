@@ -47,7 +47,7 @@ def login(request):
 #@permission_required('UserPost.itposts', raise_exception =True)
 def userpost_list(request):
         #u.user_permissions.add(user_permisssions.get(permissions))
-        posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date').order_by('category')
         return render(request, 'userblog/userpost_list.html',{'posts':posts})
 
 
