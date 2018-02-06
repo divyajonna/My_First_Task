@@ -3,12 +3,6 @@
 from django.db import models
 from django.utils import timezone
 
-#this is to make drop-dropdown
-CATEGORY_CHOICES = {
-    ('itposts', 'ITPOSTS'),
-    ('artposts','ARTPOSTS'),
-} #after doing changes to models- do makemigrations
-
 #this is to enable to access the permisssions
 from django.contrib.auth.models import Permission
 
@@ -21,7 +15,8 @@ class UserPost(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
 
     #for category drop-dropdown
-    category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='itposts')
+    category = models.IntegerField(default='1')
+
 
 
     def publish(self):

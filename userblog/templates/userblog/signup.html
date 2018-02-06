@@ -20,13 +20,13 @@ base.html: grey">{{ field.help_text }}</small>
     {% endfor %}
 
     <!--this is to create dropdown-->
-    <label for="colorSelect">Choose Category</label>
-    <select type="text" id="colorSelect" name="colorSelect">
-      <option selected>IT posts</option>
-      <option>Art posts</option>
+    <label for="postsSelect">Choose Category</label>
+    <select type="text" id="postsSelect" name="postsSelect" required>
+      <option value="1">IT posts</option>
+      <option value="2"> Art posts</option>
    </select>
    <br><br>
-   
+
     <button type="submit">Sign up</button>
   </form>
 {% endblock %}

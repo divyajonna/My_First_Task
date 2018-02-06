@@ -15,14 +15,7 @@
 
   <body>
     <div class="page-header">
-      
-      <div>
-        <!--this is used to give security for our post for authenticated users-->
-        {% if user.is_authenticated %}
-            <!--Linked to a page with the form to enable publish new posts-->
-            <a href="{% url 'userpost_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {% endif %}
-      </div>
+
 
       <h1>My Site</h1>
       {% if user.is_authenticated %}
@@ -31,12 +24,12 @@
       {% else %}
         <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
       {% endif %}
-
-
     </div>
+
 
     <div class="content-container">
       <div class="main">
+
         {% block content %}
         {% endblock %}
       </div>

@@ -52,7 +52,7 @@ def userpost_list(request):
 
 
 
-#to view our postdetails
+#to view our published postdetails
 @login_required
 def userpost_detail(request, pk):
     post = get_object_or_404(UserPost, pk=pk)
