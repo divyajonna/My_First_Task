@@ -1,6 +1,7 @@
 {% extends 'userblog/base.html' %}
 
 {% block content %}
+
 <h2>Sign up</h2>
   <form method="post"> {% csrf_token %}
     {% for field in form %}
@@ -21,12 +22,13 @@ base.html: grey">{{ field.help_text }}</small>
 
     <!--this is to create dropdown-->
     <label for="postsSelect">Choose Category</label>
-    <select type="text" id="postsSelect" name="postsSelect" required>
-      <option value="1">IT posts</option>
-      <option value="2"> Art posts</option>
+    <select type="text" id="postsSelect" name="postsSelect">
+      <option selected>IT posts</option>
+      <option> Art posts</option>
    </select>
    <br><br>
 
     <button type="submit">Sign up</button>
   </form>
+
 {% endblock %}

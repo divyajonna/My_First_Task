@@ -8,4 +8,5 @@ class PostForm(forms.ModelForm):
         model = UserPost
         fields = ('title', 'text',)
         #to add dropdown for category
-        category = forms.IntegerField(widget=forms.Select)
+        category = forms.CharField(widget=forms.Select)
+        #fields=['category']

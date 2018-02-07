@@ -1,12 +1,13 @@
 {% extends 'userblog/base.html' %}
 {% block content %}
 
-<!--this is used to give security for our post for authenticated users-->
+  <!--this is used to give security for our post for authenticated users-->
   {% if user.is_authenticated %}
     <!--Linked to a page with the form to enable publish new posts-->
       <a href="{% url 'userpost_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
   {% endif %}
-  
+      <!--Trying to check permissions with the below line for different categ-->
+
           {% for post in posts %}
               <div class="posts">
                 <div class="date">
@@ -19,4 +20,5 @@
 
               </div>
           {% endfor %}
+
 {% endblock %}

@@ -6,6 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 from .models import UserPost
+
+from .models import CreatePermission
+
 from django.utils import timezone
 
 #this is to create postdetail
@@ -44,7 +47,7 @@ def login(request):
     return render(request, 'userblog/login.html')
 
 @login_required
-#@permission_required('UserPost.itposts', raise_exception =True)
+@permission_required('userblog.itposts') #validating permissions
 def userpost_list(request):
         #u.user_permissions.add(user_permisssions.get(permissions))
         posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date').order_by('category')
