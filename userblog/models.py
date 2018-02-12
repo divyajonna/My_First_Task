@@ -3,6 +3,12 @@
 from django.db import models
 from django.utils import timezone
 
+#this is to make drop-dropdown
+CATEGORY_CHOICES = {
+    ('1', 'ITPOSTS'),
+    ('2','ARTPOSTS'),
+} #after doing changes to models- do makemigrations
+
 
 #this is to enable to access the permisssions
 from django.contrib.auth.models import Permission
@@ -17,14 +23,6 @@ class UserPost(models.Model):
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
-    #this is to make drop-dropdown
-    CATEGORY_CHOICES = {
-    ('1', 'ITPOSTS'),
-    ('2','ARTPOSTS'),
-    } #after doing changes to models- do makemigrations
-
-    #for category drop-dropdown
-    category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='itposts')
 
     def publish(self):
         self.published_date = timezone.now()
@@ -33,6 +31,10 @@ class UserPost(models.Model):
     def __str__(self):
         return self.title
         #we will get a text (string) with a Post title.
+
+
+#for category drop-dropdown
+category = models.CharField(max_length=6, choices=CATEGORY_CHOICES, default='itposts')
 
 #to create custom permisssions
 class CreatePermission(models.Model):

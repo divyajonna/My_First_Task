@@ -9,6 +9,7 @@ from .models import UserPost
 
 from .models import CreatePermission
 
+
 from django.utils import timezone
 
 #this is to create postdetail
@@ -47,10 +48,10 @@ def login(request):
     return render(request, 'userblog/login.html')
 
 @login_required
-@permission_required('userblog.itposts') #validating permissions
+#@permission_required('userblog.itposts', raise_exception =True) #validating permissions
 def userpost_list(request):
         #u.user_permissions.add(user_permisssions.get(permissions))
-        posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date').order_by('category')
+        posts=UserPost.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
         return render(request, 'userblog/userpost_list.html',{'posts':posts})
 
 
